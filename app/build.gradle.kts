@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.bukukasnusantara"
+    namespace = "com.nargyanti.bukukasnusantara"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.bukukasnusantara"
+        applicationId = "com.nargyanti.bukukasnusantara"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

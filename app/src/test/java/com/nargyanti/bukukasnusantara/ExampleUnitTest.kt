@@ -1,4 +1,4 @@
-package com.example.bukukasnusantara
+package com.nargyanti.bukukasnusantara
 
 import org.junit.Test
 

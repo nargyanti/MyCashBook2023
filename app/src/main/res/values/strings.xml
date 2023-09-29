@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Buku Kas Nusantara</string>
+    <string name="tambah_pemasukan">Tambah Pemasukan</string>
+    <string name="tambah_pengeluaran">Tambah Pengeluaran</string>
+    <string name="detail_cash_flow">Detail Cash Flow</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="nominal">Nominal</string>
+    <string name="keterangan">Keterangan</string>
+    <string name="simpan">Simpan</string>
+    <string name="kembali">Kembali</string>
+    <string name="ganti_password">Ganti Password</string>
+    <string name="password_saat_ini">Password Saat Ini</string>
+    <string name="password_baru">Password Baru</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Log In</string>
+    <string name="rangkuman_bulan_ini">Rangkuman Bulan Ini</string>
+    <string name="amount">1.200.000</string>
+    <string name="pengeluaran">Pengeluaran</string>
+    <string name="pemasukan">Pemasukan</string>
+    <string name="rp">Rp</string>
+    <string name="deskripsi">Lorem ipsum dolor sit amet</string>
 </resources>
