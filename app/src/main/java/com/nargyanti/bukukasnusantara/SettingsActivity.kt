@@ -1,22 +1,22 @@
 package com.nargyanti.bukukasnusantara
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.nargyanti.bukukasnusantara.database.DatabaseHelper
 import com.nargyanti.bukukasnusantara.model.UserModel
 
-class SettingsActivity : AppCompatActivity(), View.OnClickListener  {
-    private var dbHandler : DatabaseHelper?= null
+class SettingsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var etNewPassword: EditText
     private lateinit var etOldPassword: EditText
     private lateinit var btnSave: Button
     private lateinit var btnBack: Button
-    private var userId = 0
+    private var userId: Int = 0
+    private lateinit var dbHandler: DatabaseHelper
 
     companion object {
         const val EXTRA_USER_ID = "extra_user_id"
@@ -44,28 +44,25 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener  {
             R.id.btn_save -> {
                 val oldPassword = etOldPassword.text.toString()
                 val newPassword = etNewPassword.text.toString()
-                val result = dbHandler!!.getUserById(userId)
+                val result = dbHandler.getUserById(userId)
 
-                if(oldPassword == "" || newPassword == "") {
+                if (oldPassword.isBlank() || newPassword.isBlank()) {
                     Toast.makeText(applicationContext, "Isi form yang kosong", Toast.LENGTH_LONG).show()
-                } else {
-                    if(result.password == oldPassword) {
-                        var success : Boolean = false
-                        val user : UserModel = UserModel()
+                    return
+                }
 
-                        user.id = userId
-                        user.password = newPassword
+                if (result.password == oldPassword) {
+                    val user = UserModel()
+                    user.setUserData(userId, newPassword)
+                    val success = dbHandler.changePassword(user)
 
-                        success = dbHandler?.changePassword(user) as Boolean
-
-                        if (success) {
-                            Toast.makeText(applicationContext, "Password berhasil diubah", Toast.LENGTH_LONG).show()
-                        } else {
-                            Toast.makeText(applicationContext, "Ada yang salah saat pengisian", Toast.LENGTH_LONG).show()
-                        }
+                    if (success) {
+                        Toast.makeText(applicationContext, "Password berhasil diubah", Toast.LENGTH_LONG).show()
                     } else {
-                        Toast.makeText(applicationContext, "Password lama Anda salah", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Ada yang salah saat pengisian", Toast.LENGTH_LONG).show()
                     }
+                } else {
+                    Toast.makeText(applicationContext, "Password lama Anda salah", Toast.LENGTH_LONG).show()
                 }
             }
 

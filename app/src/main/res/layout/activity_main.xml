@@ -124,8 +124,8 @@
         <!--Graph-->
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginVertical="20dp"
+            android:layout_height="150dp"
+            android:layout_marginVertical="10dp"
             android:paddingHorizontal="10dp"
             android:src="@drawable/graph" />
 

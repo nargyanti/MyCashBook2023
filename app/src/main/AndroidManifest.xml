@@ -14,6 +14,9 @@
         android:theme="@style/Theme.BukuKasNusantara"
         tools:targetApi="31">
         <activity
+            android:name=".CashFlowDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -26,9 +29,6 @@
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".CashFlowDetailsActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddExpenseActivity"
             android:exported="false" />
         <activity
@@ -36,13 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

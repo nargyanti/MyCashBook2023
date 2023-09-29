@@ -1,15 +1,15 @@
 package com.nargyanti.bukukasnusantara
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.nargyanti.bukukasnusantara.database.DatabaseHelper
 
 class LoginActivity : AppCompatActivity() {
-    private var dbHandler : DatabaseHelper?= null
+    private lateinit var dbHandler: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,16 +21,19 @@ class LoginActivity : AppCompatActivity() {
 
         dbHandler = DatabaseHelper(this)
 
-        btnLogin.setOnClickListener{
-            var username = etUsername.text.toString()
-            var password = etPassword.text.toString()
-            val result = dbHandler!!.getUserByUsername(username)
-            if(username == "" || password == "") {
-                Toast.makeText(applicationContext, "Isi username / password yang masih kosong", Toast.LENGTH_LONG).show()
+        btnLogin.setOnClickListener {
+            val username = etUsername.text.toString()
+            val password = etPassword.text.toString()
+
+            if (username.isBlank() || password.isBlank()) {
+                Toast.makeText(applicationContext, "Isi username atau password yang masih kosong", Toast.LENGTH_LONG).show()
             } else {
-                if(result.password == password) {
-                    val moveIntent = Intent(this@LoginActivity, MainActivity::class.java)
-                    moveIntent.putExtra(MainActivity.EXTRA_USER_ID, result.id)
+                val result = dbHandler.getUserByUsername(username)
+
+                if (result.password == password) {
+                    val moveIntent = Intent(this@LoginActivity, MainActivity::class.java).apply {
+                        putExtra(MainActivity.EXTRA_USER_ID, result.id)
+                    }
                     startActivity(moveIntent)
                 } else {
                     Toast.makeText(applicationContext, "Username atau password Anda salah", Toast.LENGTH_LONG).show()
